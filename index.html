@@ -17,11 +17,12 @@
       <div>
         <label for="user-select">Choose User:</label>
         <select id="user-select">
-          <option value="user1">Alex Jamshidi</option>
-          <option value="user2">Fayaz</option>
-          <option value="user3">Mohsen</option>
-          <option value="user4">Carlos</option>
-          <option value="user5">Abdul</option>
+          <option value="" disabled selected>Select a User</option>
+          <option value="1">Alex Jamshidi</option>
+          <option value="2">Fayaz</option>
+          <option value="3">Mohsen</option>
+          <option value="4">Carlos</option>
+          <option value="5">Abdul</option>
         </select>
       </div>
     </section>
@@ -47,22 +48,18 @@
 
     <section aria-labelledby="bookmarks-heading">
       <h2 id="bookmarks-heading">Bookmarks</h2>
-      <div id="bookmarks-container">
+      <div id="bookmarks-container"></div>
+    </section>
 
-        <template id="bookmark-template">
-            <div class="bookmark">
+            <template id="bookmark-template">
               <h3 class="bookmark-title"></h3>
               <p class="bookmark-description"></p>
-              <time class="bookmark-timestamp" datetime="2026-06-01T10:00:00">
               </time>
-            </div>
-        </template>
+            </template>
 
-      </div>
-    </section>
   </main>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 
 </body>
 </html>
