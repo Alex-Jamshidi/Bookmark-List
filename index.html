@@ -47,9 +47,22 @@
 
     <section aria-labelledby="bookmarks-heading">
       <h2 id="bookmarks-heading">Bookmarks</h2>
-      <div id="bookmarks-container"></div>
+      <div id="bookmarks-container">
+
+        <template id="bookmark-template">
+            <div class="bookmark">
+              <h3 class="bookmark-title"></h3>
+              <p class="bookmark-description"></p>
+              <time class="bookmark-timestamp" datetime="2026-06-01T10:00:00">
+              </time>
+            </div>
+        </template>
+
+      </div>
     </section>
   </main>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
