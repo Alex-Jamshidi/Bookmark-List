@@ -1,12 +1,72 @@
-// This is a placeholder file which shows how you can access functions defined in other files.
-// It can be loaded into index.html.
-// You can delete the contents of the file once you have understood how it works.
-// Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
-// You can't open the index.html file using a file:// URL.
+import { getUserIds, setData, getData } from "./storage.js";
 
-import { getUserIds } from "./storage.js";
+// ======================================================
+// ----- DOMS
+// ======================================================
+const userSelect = document.getElementById("user-select");
+const bookmarksContainer = document.getElementById("bookmarks-container");
 
-window.onload = function () {
+// ======================================================
+// ----- Runs on page load
+// ======================================================
+function setup() {
   const users = getUserIds();
-  document.querySelector("body").innerText = `There are ${users.length} users`;
-};
+  createBookmarksData(users); // testing only
+}
+
+// ======================================================
+// ----- Bookmarks
+// ======================================================
+
+// Creates and displays bookmarks for single user
+function displayBookmarks(allBookmarks) {
+  bookmarksContainer.innerHTML = "";
+  const bookmarks = allBookmarks.map(createBookmark);
+  bookmarksContainer.append(...bookmarks);
+}
+
+// Creates single bookmark
+function createBookmark(bookmark) {
+  const template = document.getElementById("bookmark-template");
+  const clone = template.content.cloneNode(true);
+
+  clone.querySelector(".bookmark-title").textContent = bookmark.title;
+  clone.querySelector(".bookmark-description").textContent =
+    bookmark.description;
+
+  return clone;
+}
+
+// ======================================================
+// ----- User select
+// ======================================================
+
+// Gets user's bookmarks
+userSelect.addEventListener("change", function (option) {
+  const userID = option.target.value;
+  displayBookmarks(getData(userID));
+});
+
+// ======================================================
+// ----- Functions for testing
+// ======================================================
+
+// populate each user with 2 bookmarks
+function createBookmarksData(users) {
+  for (const userID of users)
+    setData(userID, [
+      {
+        title: `User${userID}'s bookmark1 title`,
+        description: `I am bookmark 1 of user${userID}`,
+      },
+      {
+        title: `User${userID}'s bookmark2 title`,
+        description: `I am bookmark 2 of user${userID}`,
+      },
+    ]);
+}
+
+// ======================================================
+// ----- Page Loader
+// ======================================================
+window.onload = setup;
