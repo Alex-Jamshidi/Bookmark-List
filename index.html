@@ -51,11 +51,14 @@
       <div id="bookmarks-container"></div>
     </section>
 
-            <template id="bookmark-template">
-              <h3 class="bookmark-title"></h3>
-              <p class="bookmark-description"></p>
-              </time>
-            </template>
+     <template id="bookmark-template">
+      <div class="bookmark-item">
+        <h3 class="bookmark-title"></h3>
+        <p class="bookmark-description"></p>
+        <button class="like-btn">Like (<span class="like-count">0</span>)</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+    </template>
 
   </main>
 
