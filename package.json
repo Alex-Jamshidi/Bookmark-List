@@ -1,7 +1,17 @@
 {
   "name": "project-shared-bookmarks",
   "version": "1.0.0",
+
+    "devDependencies": { 
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "@jest/globals": "^29.0.0",
+    "jsdom": "^24.0.0"
+  },
   "scripts": {
-    "test": "node example.test.js"
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
