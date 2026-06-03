@@ -135,12 +135,14 @@ function createBookmarksData(users) {
         {
           title: `User-${userId}'s  1st bookmark title`,
           description: `I am bookmark 1st of user-${userId}`,
+          url: `https://www.google.com/search?q=user${userId}+bookmark1`,
           timeStamp: "Bookmark created 03/06/2026, 12:00:00",
           likes: 0,
         },
         {
           title: `User-${userId}'s  2nd bookmark title`,
           description: `I am bookmark 2nd of user-${userId}`,
+          url: `https://www.google.com/search?q=user${userId}+bookmark2`,
           timeStamp: "Bookmark created 03/06/2026, 17:30:00",
           likes: 0,
         },
