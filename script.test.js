@@ -42,7 +42,19 @@ setData("2", [{ title: "GitHub", description: "Version control" }]);
 // ======================================================
 const { displayBookmarks } = await import("./script.js");
 
-describe("selecting a user displays their bookmarks", () => {
+describe("The website must contain a drop-down which lists five users", () => {
+  it("user select drop-down has 5 users", () => {
+    const userSelect = document.getElementById("user-select");
+    const userCount = userSelect.options.length - 1;
+    expect(userCount).toEqual(5);
+  });
+
+  it("storage contains 5 users", () => {
+    expect(getUserIds().length).toEqual(5);
+  });
+});
+
+describe("Selecting a user must display the list of bookmarks for the relevant user", () => {
   // Runs before every test — clears the bookmarks container
   beforeEach(() => {
     console.log("container:", document.getElementById("bookmarks-container"));
@@ -50,7 +62,6 @@ describe("selecting a user displays their bookmarks", () => {
     document.getElementById("bookmarks-container").innerHTML = "";
   });
 
-  // Check display bookmark function shows bookmarks
   it("displays 2 bookmarks for user 1", () => {
     displayBookmarks(getData("1"));
 
@@ -61,7 +72,6 @@ describe("selecting a user displays their bookmarks", () => {
     expect(titles[1].textContent).toBe("CYF");
   });
 
-  // Check display bookmark function clears past bookmarks
   it("switching users clears previous bookmarks", () => {
     displayBookmarks(getData("1"));
     displayBookmarks(getData("2"));

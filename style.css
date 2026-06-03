@@ -90,6 +90,12 @@ button:hover {
   font-size: 0.95rem;
 }
 
+.bookmark-timestamp {
+  margin: 15px 0 0 0;
+  color: #666;
+  font-size: 0.65rem;
+}
+
 .bookmark-item button {
   padding: 6px 12px;
   font-size: 0.85rem;
