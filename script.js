@@ -19,7 +19,7 @@ function setup() {
 // ======================================================
 
 // Creates and displays bookmarks for single user
-function displayBookmarks(allBookmarks) {
+export function displayBookmarks(allBookmarks) {
   bookmarksContainer.innerHTML = "";
   const bookmarks = allBookmarks.map((bookmark, index) => createBookmark(bookmark, index));
   bookmarksContainer.append(...bookmarks);
