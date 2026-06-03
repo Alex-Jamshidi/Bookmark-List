@@ -1,7 +1,16 @@
 {
   "name": "project-shared-bookmarks",
   "version": "1.0.0",
+  "type": "module",
+  "devDependencies": {
+    "@jest/globals": "^29.0.0",
+    "jest": "^29.0.0",
+    "jsdom": "^24.0.0"
+  },
   "scripts": {
-    "test": "node example.test.js"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
