@@ -41,7 +41,6 @@ You **must not** implement any kind of authentication. Just a drop-down to choos
 After picking a user, your website should display the list of bookmarks in reverse chronological order. For each bookmark, it should display the title and description of the bookmark. The title should be hyperlink to the URL of the bookmark. The timestamp at which the bookmark was created should be displayed.
 
 Each bookmark should also have:
-
 - A button which, when clicked, copies the URL to the clipboard.
 - A like counter/button. When a bookmark is first saved, its like count should be 0. Each time a user clicks the like button, that number should go up by one, and be displayed. This like count should be persisted such that closing the page and coming back to it, it is preserved.
 
@@ -72,25 +71,3 @@ All of the below requirements must be met for the project to be considered compl
 - After creating a new bookmark, the list of bookmarks for the current user is shown, including the new bookmark
 - The website must score 100 for accessibility in Lighthouse
 - Unit tests must be written for at least one non-trivial function
-
-# Package.json explained
-
-{
-"name": "project-shared-bookmarks",
-"version": "1.0.0",
-"type": "module", // sets scope as modular, requiring functions to be imported/exported rather than global
-
-    "devDependencies": { // packages only needed for development/testing (not shipped to users)
-    "jest": "^29.0.0", // the jest testing framework
-    "jest-environment-jsdom": "^29.0.0", // lets jest simulate a browser DOM
-    "@jest/globals": "^29.0.0", // gives describe, it, expect etc in tests
-    "jsdom": "^24.0.0" // DOM simulator (used by jest-environment-jsdom)
-
-},
-"scripts": {
-"test": "node --experimental-vm-modules node_modules/.bin/jest" // runs node so jest can use 'import' function
-},
-"jest": {
-"testEnvironment": "node"
-}
-}
