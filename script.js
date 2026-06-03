@@ -1,4 +1,4 @@
-import { getUserIds, setData, getData } from "./storage.js";
+import { getUserIds, setData, getData, clearData } from "./storage.js";
 
 // ======================================================
 // ----- DOMS
@@ -15,6 +15,7 @@ let currentUserId;
 function setup() {
   userSelect.value = "";
   const users = getUserIds();
+  // clearAllData(); // testing only
   createBookmarksData(users); // testing only
   render();
 }
@@ -46,7 +47,10 @@ function createBookmark(bookmark, index) {
   const template = document.getElementById("bookmark-template");
   const clone = template.content.cloneNode(true);
 
-  clone.querySelector(".bookmark-title").textContent = bookmark.title;
+  const titleLink = clone.querySelector(".bookmark-title");
+  titleLink.textContent = bookmark.title;
+  titleLink.href = bookmark.url;
+
   clone.querySelector(".bookmark-description").textContent =
     bookmark.description;
   clone.querySelector(".bookmark-timestamp").textContent = bookmark.timeStamp;
@@ -134,20 +138,27 @@ function createBookmarksData(users) {
       setData(userId, [
         {
           title: `User-${userId}'s  1st bookmark title`,
-          description: `I am bookmark 1st of user-${userId}`,
+          description: `I am the 1st bookmark of user-${userId}`,
           url: `https://www.google.com/search?q=user${userId}+bookmark1`,
           timeStamp: "Bookmark created 03/06/2026, 12:00:00",
           likes: 0,
         },
         {
           title: `User-${userId}'s  2nd bookmark title`,
-          description: `I am bookmark 2nd of user-${userId}`,
+          description: `I am the 2nd bookmark of user-${userId}`,
           url: `https://www.google.com/search?q=user${userId}+bookmark2`,
           timeStamp: "Bookmark created 03/06/2026, 17:30:00",
           likes: 0,
         },
       ]);
     }
+  }
+}
+
+function clearAllData() {
+  const users = getUserIds();
+  for (const userId of users) {
+    clearData(userId);
   }
 }
 
