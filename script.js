@@ -68,6 +68,13 @@ function createBookmark(bookmark, index) {
     render();
   });
 
+  const copyBtn = clone.querySelector(".copy-btn");
+  copyBtn.addEventListener("click", () => {
+    if (bookmark.url) {
+      navigator.clipboard.writeText(bookmark.url);
+    }
+  });
+
   return clone;
 }
 
