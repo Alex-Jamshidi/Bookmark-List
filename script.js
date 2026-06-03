@@ -103,7 +103,7 @@ function addBookmark(userId, urlInput, titleInput, descInput, timeInput) {
     description: descInput,
     url: urlInput,
     likes: 0,
-    timeStamp: timeInput,
+    timeStamp: `Bookmark created ${timeInput}`,
   };
 
   const currentBookmarks = getData(userId) || [];
@@ -135,13 +135,13 @@ function createBookmarksData(users) {
         {
           title: `User-${userId}'s  1st bookmark title`,
           description: `I am bookmark 1st of user-${userId}`,
-          timeStamp: "03/06/2026, 12:00:00",
+          timeStamp: "Bookmark created 03/06/2026, 12:00:00",
           likes: 0,
         },
         {
           title: `User-${userId}'s  2nd bookmark title`,
           description: `I am bookmark 2nd of user-${userId}`,
-          timeStamp: "03/06/2026, 17:30:00",
+          timeStamp: "Bookmark created 03/06/2026, 17:30:00",
           likes: 0,
         },
       ]);
