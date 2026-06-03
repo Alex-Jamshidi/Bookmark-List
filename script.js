@@ -34,12 +34,14 @@ userSelect.addEventListener("change", function (option) {
   render();
 });
 
-// Creates and displays bookmarks for single user
+// Creates and displays bookmarks for single user in reverse chronological order.
 export function displayBookmarks(allBookmarks) {
-  const bookmarks = allBookmarks.map((bookmark, index) =>
-    createBookmark(bookmark, index),
-  );
-  bookmarksContainer.replaceChildren(...bookmarks);
+  bookmarksContainer.innerHTML = "";
+  const bookmarks = allBookmarks
+    .map((bookmark, index) => ({ bookmark, index }))
+    .toReversed()
+    .map(({ bookmark, index }) => createBookmark(bookmark, index));
+  bookmarksContainer.append(...bookmarks);
 }
 
 // Creates single bookmark
