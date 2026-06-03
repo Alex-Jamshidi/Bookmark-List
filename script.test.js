@@ -1,4 +1,4 @@
-// Imported Jest functions
+// Import Jest functions
 import { describe, it, expect, beforeEach } from "@jest/globals";
 
 // Import readFileSync from Node.js built-in file system module
