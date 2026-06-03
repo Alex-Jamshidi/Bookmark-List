@@ -10,6 +10,7 @@ const bookmarksContainer = document.getElementById("bookmarks-container");
 // ----- Runs on page load
 // ======================================================
 function setup() {
+  initUserSelect();
   const users = getUserIds();
   createBookmarksData(users); // testing only
 }
@@ -19,7 +20,7 @@ function setup() {
 // ======================================================
 
 // Creates and displays bookmarks for single user
-function displayBookmarks(allBookmarks) {
+export function displayBookmarks(allBookmarks) {
   bookmarksContainer.innerHTML = "";
   const bookmarks = allBookmarks.map(createBookmark);
   bookmarksContainer.append(...bookmarks);
@@ -41,11 +42,13 @@ function createBookmark(bookmark) {
 // ----- User select
 // ======================================================
 
-// Gets user's bookmarks
-userSelect.addEventListener("change", function (option) {
-  const userID = option.target.value;
-  displayBookmarks(getData(userID));
-});
+// initiates event listener; user select displays user's bookmarks
+export function initUserSelect() {
+  userSelect.addEventListener("change", function (option) {
+    const userID = option.target.value;
+    displayBookmarks(getData(userID));
+  });
+}
 
 // ======================================================
 // ----- Functions for testing

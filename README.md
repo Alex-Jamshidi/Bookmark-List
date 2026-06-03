@@ -78,6 +78,7 @@ All of the below requirements must be met for the project to be considered compl
 {
 "name": "project-shared-bookmarks",
 "version": "1.0.0",
+"type": "module", // sets scope as modular, requiring functions to be imported/exported rather than global
 
     "devDependencies": { // packages only needed for development/testing (not shipped to users)
     "jest": "^29.0.0", // the jest testing framework
@@ -87,9 +88,9 @@ All of the below requirements must be met for the project to be considered compl
 
 },
 "scripts": {
-"test": "jest"
+"test": "node --experimental-vm-modules node_modules/.bin/jest" // runs node so jest can use 'import' function
 },
 "jest": {
-"testEnvironment": "jsdom" // tells jest to use jsdom (fake browser) when running tests
+"testEnvironment": "node"
 }
 }
