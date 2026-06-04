@@ -34,12 +34,21 @@ userSelect.addEventListener("change", function (option) {
   render();
 });
 
-// Creates and displays bookmarks for single user
+// Creates and displays bookmarks for single user in reverse chronological order.
 export function displayBookmarks(allBookmarks) {
-  const bookmarks = allBookmarks.map((bookmark, index) =>
-    createBookmark(bookmark, index),
-  );
-  bookmarksContainer.replaceChildren(...bookmarks);
+  bookmarksContainer.innerHTML = "";
+  if (!allBookmarks || allBookmarks.length === 0) {
+    const noBookmarksMessage = document.createElement("p");
+    noBookmarksMessage.className = "no-bookmarks-msg";
+    noBookmarksMessage.textContent = "This user doesn't have any saved bookmarks yet.";
+    bookmarksContainer.append(noBookmarksMessage);
+    return;
+  }
+  const bookmarks = allBookmarks
+    .map((bookmark, index) => ({ bookmark, index }))
+    .toReversed()
+    .map(({ bookmark, index }) => createBookmark(bookmark, index));
+  bookmarksContainer.append(...bookmarks);
 }
 
 // Creates single bookmark
@@ -66,6 +75,13 @@ function createBookmark(bookmark, index) {
   deleteBtn.addEventListener("click", () => {
     deleteBookmark(currentUserId, index);
     render();
+  });
+
+  const copyBtn = clone.querySelector(".copy-btn");
+  copyBtn.addEventListener("click", () => {
+    if (bookmark.url) {
+      navigator.clipboard.writeText(bookmark.url);
+    }
   });
 
   return clone;
