@@ -1,5 +1,5 @@
 # The following criteria were tested through:
-## Unit tests in script.test.js
+* Unit tests in script.test.js
 
 * The website must contain a drop-down which lists five users
 * Selecting a user must display the list of bookmarks for the relevant user
@@ -10,7 +10,7 @@
 * Each bookmark’s like counter works independently, and persists data across sessions
 
 # The following criteria were tested through:
-## Manual testing on live site
+* Manual testing on live site
 **Live Site:** [https://bookmark-list-fayaz-alex.netlify.app/](https://bookmark-list-fayaz-alex.netlify.app/)
 
 * The website must contain a form with inputs for a URL, a title, and a description. The form should have a submit button.
