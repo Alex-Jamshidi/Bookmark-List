@@ -22,3 +22,7 @@ Load site, check form, input new bookmark (URL, title and description), click su
 New bookmark was added to list of bookmarks and shown below for the relevant user
 Switching user does not show the added bookmark
 Switching back to original user and clicking copy URL copies correct url into clipboard
+
+# The website must score 100 for accessibility in Lighthouse - Checked through Chrome:
+
+# Unit tests must be written for at least one non-trivial function - Complete
