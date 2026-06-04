@@ -23,6 +23,9 @@ New bookmark was added to list of bookmarks and shown below for the relevant use
 Switching user does not show the added bookmark
 Switching back to original user and clicking copy URL copies correct url into clipboard
 
-# The website must score 100 for accessibility in Lighthouse - Checked through Chrome:
+# The website must score 100 for accessibility in Lighthouse
+Checked through Chrome:
+<img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/a09585e8-e6c2-4a12-8eaa-02d081e07a6a" />
+
 
 # Unit tests must be written for at least one non-trivial function - Complete
