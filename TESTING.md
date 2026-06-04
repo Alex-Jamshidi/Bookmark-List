@@ -25,7 +25,8 @@ Switching back to original user and clicking copy URL copies correct url into cl
 
 # The website must score 100 for accessibility in Lighthouse
 Checked through Chrome:
-<img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/a09585e8-e6c2-4a12-8eaa-02d081e07a6a" />
+<img width="2454" height="1270" alt="image" src="https://github.com/user-attachments/assets/00a315fe-b1c9-4b43-862a-c7455a163736" />
+
 
 
 # Unit tests must be written for at least one non-trivial function - Complete
