@@ -117,7 +117,13 @@ bookmarkForm.addEventListener("submit", function (event) {
 // ----- Back End
 // ======================================================
 
-function addBookmark(userId, urlInput, titleInput, descInput, timeInput) {
+export function addBookmark(
+  userId,
+  urlInput,
+  titleInput,
+  descInput,
+  timeInput,
+) {
   const newBookmark = {
     title: titleInput,
     description: descInput,
@@ -131,13 +137,13 @@ function addBookmark(userId, urlInput, titleInput, descInput, timeInput) {
   setData(userId, currentBookmarks);
 }
 
-function addLike(userId, index) {
+export function addLike(userId, index) {
   const currentBookmarks = getData(userId);
   currentBookmarks[index].likes = (currentBookmarks[index].likes || 0) + 1;
   setData(userId, currentBookmarks);
 }
 
-function deleteBookmark(userId, index) {
+export function deleteBookmark(userId, index) {
   const currentBookmarks = getData(userId);
   currentBookmarks.splice(index, 1);
   setData(userId, currentBookmarks);
@@ -153,17 +159,17 @@ function createDummyBookmarks(users) {
     if (!localStorage.getItem(`stored-data-user-${userId}`)) {
       setData(userId, [
         {
-          title: "Dummy Bookmark 2",
+          title: "Another Dummy Bookmark",
           description:
             "I'm another pre-made bookmark, why not try to delete me?",
           url: "https://www.google.com/search?q=please+don't+delete+me",
-          timeStamp: "Bookmark created before time began",
+          timeStamp: "Bookmark created an hour before time began",
           likes: 0,
         },
         {
-          title: "Dummy Bookmark",
+          title: "Dummy Bookmark to get you started",
           description:
-            "I'm a pre-made bookmark to use as an example, why not try to copy my URL?",
+            "I'm a pre-made bookmark to use as an example, why not try to click me or copy my URL?",
           url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
           timeStamp: "Bookmark created before time began",
           likes: 0,
@@ -172,6 +178,8 @@ function createDummyBookmarks(users) {
     }
   }
 }
+
+// users.forEach(clearData); // uncomment me to reset bookmarks
 
 // ======================================================
 // ----- Page Loader
