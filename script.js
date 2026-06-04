@@ -10,17 +10,17 @@ const bookmarkForm = document.getElementById("bookmark-form");
 // ======================================================
 // ----- Setup and Render
 // ======================================================
+const users = getUserIds();
 let currentUserId;
 
 function setup() {
   userSelect.value = "";
-  const users = getUserIds();
-  // clearAllData(); // testing only
-  createBookmarksData(users); // testing only
+  createDummyBookmarks(users);
   render();
 }
 
 function render() {
+  if (!users.includes(currentUserId)) return;
   displayBookmarks(getData(currentUserId));
 }
 
@@ -36,19 +36,19 @@ userSelect.addEventListener("change", function (option) {
 
 // Creates and displays bookmarks for single user in reverse chronological order.
 export function displayBookmarks(allBookmarks) {
-  bookmarksContainer.innerHTML = "";
+  const noBookmarksMessage = document
+    .getElementById("no-bookmarks-template")
+    .content.cloneNode(true);
+
   if (!allBookmarks || allBookmarks.length === 0) {
-    const noBookmarksMessage = document.createElement("p");
-    noBookmarksMessage.className = "no-bookmarks-msg";
-    noBookmarksMessage.textContent = "This user doesn't have any saved bookmarks yet.";
-    bookmarksContainer.append(noBookmarksMessage);
+    bookmarksContainer.replaceChildren(noBookmarksMessage);
     return;
   }
+
   const bookmarks = allBookmarks
-    .map((bookmark, index) => ({ bookmark, index }))
-    .toReversed()
-    .map(({ bookmark, index }) => createBookmark(bookmark, index));
-  bookmarksContainer.append(...bookmarks);
+    .map((bookmark, index) => createBookmark(bookmark, index))
+    .toReversed();
+  bookmarksContainer.replaceChildren(...bookmarks);
 }
 
 // Creates single bookmark
@@ -148,33 +148,28 @@ function deleteBookmark(userId, index) {
 // ======================================================
 
 // populate each user with 2 bookmarks
-function createBookmarksData(users) {
+function createDummyBookmarks(users) {
   for (const userId of users) {
     if (!localStorage.getItem(`stored-data-user-${userId}`)) {
       setData(userId, [
         {
-          title: `User-${userId}'s  1st bookmark title`,
-          description: `I am the 1st bookmark of user-${userId}`,
-          url: `https://www.google.com/search?q=user${userId}+bookmark1`,
-          timeStamp: "Bookmark created 03/06/2026, 12:00:00",
+          title: "Dummy Bookmark 2",
+          description:
+            "I'm another pre-made bookmark, why not try to delete me?",
+          url: "https://www.google.com/search?q=please+don't+delete+me",
+          timeStamp: "Bookmark created before time began",
           likes: 0,
         },
         {
-          title: `User-${userId}'s  2nd bookmark title`,
-          description: `I am the 2nd bookmark of user-${userId}`,
-          url: `https://www.google.com/search?q=user${userId}+bookmark2`,
-          timeStamp: "Bookmark created 03/06/2026, 17:30:00",
+          title: "Dummy Bookmark",
+          description:
+            "I'm a pre-made bookmark to use as an example, why not try to copy my URL?",
+          url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          timeStamp: "Bookmark created before time began",
           likes: 0,
         },
       ]);
     }
-  }
-}
-
-function clearAllData() {
-  const users = getUserIds();
-  for (const userId of users) {
-    clearData(userId);
   }
 }
 
